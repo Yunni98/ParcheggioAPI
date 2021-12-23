@@ -1,0 +1,37 @@
+﻿<Window x:Class="Parcheggio.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Parcheggio.Views"
+        mc:Ignorable="d"
+        Title="{Binding NomeParcheggio}" Height="537" Width="1100" Icon="/Views/Icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <Menu FontSize="19" Height="30">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem x:Name="Menu" Header="_Menù" Height="30" Click="Ritorna_Menu"/>
+                <MenuItem x:Name="VeicoliAttuali" Height="30" Header="Veicoli Attuali" Click="Stato_Completo"/>
+                <MenuItem x:Name="storico" Height="30" Header="_Storico" Click="Storico"/>
+                <MenuItem x:Name="IncassoGiornaliero" Header="_Incasso Attuale" Height="30" Click="Incasso_Giornaliero"/>
+                <MenuItem x:Name="IncassoStorico" Header="_Incasso Storico" Height="30" Click="Incasso_Storico"/>
+                <MenuItem x:Name="itProprietari" Header="Proprietari" Height="30" Click="MenuItem_Click"/>
+                <MenuItem x:Name="aggiorna" Header="Aggiorna" Click="Aggiorna" Height="30"/>
+                <MenuItem Header="{Binding UserLoggato}" Height="30" HorizontalAlignment="Right">
+                    <MenuItem Header="Logout" Height="30" Click="Logout_Click"/>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid Name="ParcheggioView"/>
+        </ScrollViewer>
+    </Grid>
+</Window>

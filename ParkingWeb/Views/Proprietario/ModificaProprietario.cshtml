@@ -1,0 +1,47 @@
+﻿@model ParkingWeb.ViewModels.ParcheggioDetailsModel
+
+@{
+    ViewData["Title"] = "ModificaProprietario";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Modifica Proprietario</h1>
+
+<h4>Person</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ModificaProprietario" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.Persona.Nome" class="control-label"></label>
+                <input asp-for="@Model.Persona.Nome" class="form-control" />
+                <span asp-validation-for="@Model.Persona.Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Persona.Cognome" class="control-label"></label>
+                <input asp-for="@Model.Persona.Cognome" class="form-control" />
+                <span asp-validation-for="@Model.Persona.Cognome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Persona.DataNascita" class="control-label"></label>
+                <input asp-for="@Model.Persona.DataNascita" class="form-control" />
+                <span asp-validation-for="@Model.Persona.DataNascita" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="@Model.Persona.CodiceFiscale" />
+            <div class="form-group">
+                <input type="submit" formmethod="post" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a href="http://localhost:34483/VisualizzaProprietari/@Model.NomeParcheggio">
+        Ritorna alla lista proprietari
+    </a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

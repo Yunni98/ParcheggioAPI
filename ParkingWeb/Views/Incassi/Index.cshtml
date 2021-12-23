@@ -1,0 +1,31 @@
+﻿@model ParkingWeb.Models.IncassiGornalieri
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<form method="get" asp-action="Index">
+    <p style="position:relative; left:635px"/>
+</form>
+
+<div>
+    <h4>Storico Incassi</h4>
+    <hr />
+    <table class="table table-light table-bordered" style="width:100%">
+        <tr>
+            <th>Giorno</th>
+            <th>Nome del Parcheggio</th>
+            <th>Incasso</th>
+
+        </tr>
+        @foreach (var d in Model.Incassi)
+        {
+            <tr>
+                <td>@d.Giorno.ToShortDateString()</td>
+                <td>@d.NomeParcheggio</td>
+                <td>@d.IncassoTotale €</td>
+            </tr>
+        }
+    </table>
+
+</div>
